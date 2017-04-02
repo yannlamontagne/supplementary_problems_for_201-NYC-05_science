@@ -1,0 +1,1610 @@
+
+
+
+
+
+
+
+    \begin{exparts}
+        \partsitem \cite{Monthly55p249}
+        Prove that the area of a triangle with vertices \( (x_1,y_1) \),
+        \( (x_2,y_2) \), and \( (x_3,y_3) \) is
+        \begin{equation*}
+          \frac{1}{2}
+          \begin{vmat}
+            x_1  &x_2 &x_3  \\
+            y_1  &y_2 &y_3  \\
+            1    &1   &1
+          \end{vmat}.
+        \end{equation*}
+      \partsitem \cite{MathMag73p286}
+        Prove that the area of a triangle with vertices at \( (x_1,y_1) \),
+        \( (x_2,y_2) \), and \( (x_3,y_3) \) whose coordinates are integers
+        has an area of \( N \) or \( N/2 \) for some positive integer \( N \).
+    \end{exparts}
+    \begin{answer}
+      \begin{exparts}
+        For geometric insight, this 
+        picture shows that the box formed by the three vectors.
+        Note that all 
+        three vectors end in the $z=1$ plane.
+        Below the two vectors on the right is the line through
+        $(x_2,y_2)$ and $(x_3,y_3)$.
+        \begin{center}
+          \includegraphics{ch4.49}
+        \end{center}
+        The box will 
+        have a nonzero volume unless the triangle formed by the ends of the
+        three is degenerate.
+        That only happens (assuming that $(x_2,y_3)\neq (x_3,y_3)$)
+        if  $(x,y)$ lies on the line through the other two. 
+       \partsitem \answerasgiven %
+        We find the altitude through $(x_1,y_1)$ of a triangle with vertices
+        $(x_1,y_1)$ $(x_2,y_2)$ and $(x_3,y_3)$ in the usual
+        way from the normal form of the above:
+        \begin{equation*}
+          \frac{1}{\sqrt{(x_2-x_3)^2+(y_2-y_3)^2}}
+          \begin{vmat}
+            x_1  &x_2  &x_3  \\
+            y_1  &y_2  &y_3  \\
+            1    &1    &1
+          \end{vmat}.
+        \end{equation*}
+        Another step shows the area of the triangle to be
+        \begin{equation*}
+          \frac{1}{2}
+          \begin{vmat}
+            x_1  &x_2  &x_3  \\
+            y_1  &y_2  &y_3  \\
+            1    &1    &1
+          \end{vmat}.
+        \end{equation*}
+        This exposition reveals the \textit{modus operandi} more clearly
+        than the usual proof of showing a collection of terms to be identical
+        with the determinant.
+       \partsitem  \answerasgiven %
+        Let
+        \begin{equation*}
+          D=
+          \begin{vmat}
+            x_1  &x_2  &x_3  \\
+            y_1  &y_2  &y_3  \\
+            1    &1    &1
+          \end{vmat}
+        \end{equation*}
+        then the area of the triangle is $(1/2)\deter{D}$.
+        Now if the coordinates are all integers, then $D$ is an integer.
+      \end{exparts}
+    \end{answer}
+\end{exercises}
+
+
+   \item \label{exer:ThreeByThreeDetForm} 
+    Do the Gaussian reduction to check
+    the formula for $\nbyn{3}$ matrices stated in the preamble to
+    this section.
+    \begin{center}
+      \( \begin{mat}
+               a  &b  &c  \\
+               d  &e  &f  \\
+               g  &h  &i
+         \end{mat} \)
+      is nonsingular iff
+      \( aei+bfg+cdh-hfa-idb-gec \neq 0 \)
+    \end{center}
+    \begin{answer}
+      We first reduce the matrix to echelon form.
+      To begin, assume that \( a\neq 0 \) and that \( ae-bd\neq 0 \).
+      \begin{multline*}
+        \grstep{(1/a)\rho_1}
+        \begin{mat}
+           1   &b/a   &c/a   \\
+           d   &e     &f     \\
+           g   &h     &i
+         \end{mat}                                           
+        \grstep[-g\rho_1+\rho_3]{-d\rho_1+\rho_2}
+        \begin{mat}
+           1   &b/a           &c/a           \\
+           0   &(ae-bd)/a     &(af-cd)/a     \\
+           0   &(ah-bg)/a     &(ai-cg)/a
+         \end{mat}                                            \\
+        \grstep{(a/(ae-bd))\rho_2}
+        \begin{mat}
+           1   &b/a           &c/a             \\
+           0   &1             &(af-cd)/(ae-bd) \\
+           0   &(ah-bg)/a     &(ai-cg)/a
+         \end{mat}
+      \end{multline*}
+      This step finishes the calculation.
+      \begin{equation*}
+        \grstep{((ah-bg)/a)\rho_2+\rho_3}
+        \begin{mat}
+           1   &b/a    &c/a             \\
+           0   &1      &(af-cd)/(ae-bd)      \\
+           0   &0      &(aei+bgf+cdh-hfa-idb-gec)/(ae-bd)
+         \end{mat}
+      \end{equation*}
+      Now assuming that $a\neq 0$ and \( ae-bd\neq 0 \), 
+      the original matrix is nonsingular
+      if and only if the \( 3,3 \) entry above is nonzero.
+      That is, under the assumptions, the original matrix is
+      nonsingular if and only if $aei+bgf+cdh-hfa-idb-gec\neq 0$,
+      as required.
+
+      We finish by running down what happens if the assumptions that were
+      taken for convenience in the prior paragraph do not hold.
+      First, if \( a\neq 0 \) but \( ae-bd=0 \) then we can swap
+      \begin{equation*}
+        \begin{mat}
+           1   &b/a           &c/a           \\
+           0   &0             &(af-cd)/a     \\
+           0   &(ah-bg)/a     &(ai-cg)/a
+         \end{mat}                                  
+        \grstep{\rho_2\leftrightarrow\rho_3}
+        \begin{mat}
+           1   &b/a           &c/a           \\
+           0   &(ah-bg)/a     &(ai-cg)/a     \\
+           0   &0             &(af-cd)/a
+         \end{mat}
+      \end{equation*}
+      and conclude that the matrix is nonsingular if and only if either
+      \( ah-bg=0 \) or \( af-cd=0 \).
+      The condition `\( ah-bg=0 \) or \( af-cd=0 \)' is equivalent to
+      the condition `\( (ah-bg)(af-cd)=0 \)'.
+      Multiplying out and using the case assumption that $ae-bd=0$
+      to substitute $ae$ for $bd$ gives this.
+      \begin{multline*}
+         0=ahaf-ahcd-bgaf+bgcd
+          =ahaf-ahcd-bgaf+aegc            \\
+          =a(haf-hcd-bgf+egc)
+      \end{multline*}
+      Since \( a\neq 0 \), we have that the matrix
+      is nonsingular if and only if \( haf-hcd-bgf+egc=0 \).
+      Therefore, in this \( a\neq 0 \) and \( ae-bd=0 \) case, 
+      the matrix is nonsingular when
+      \( haf-hcd-bgf+egc-i(ae-bd)=0 \).
+
+      The remaining cases are routine.
+      Do the \( a=0 \) but \( d\neq 0 \) case and the \( a=0 \) and \( d=0 \)
+      but \( g\neq 0 \) case by first swapping rows and then going on as
+      above.
+      The \( a=0 \), \( d=0 \), and \( g=0 \) case is easy\Dash that matrix is
+      singular since the columns form a linearly dependent set, and the
+      determinant comes out to be zero.  
+    \end{answer}
+
+
+
+  \recommended \item
+    Prove that the area of this region in the plane
+    \begin{center}
+      \includegraphics{ch4.30}
+    \end{center}
+    is equal to the value of this determinant.
+    \begin{equation*}
+       \det(
+       \begin{mat}
+          x_1  &x_2  \\
+          y_1  &y_2
+       \end{mat})
+    \end{equation*}
+    Compare with this.
+    \begin{equation*}
+       \det(
+       \begin{mat}
+          x_2  &x_1  \\
+          y_2  &y_1
+       \end{mat})
+    \end{equation*}
+    \begin{answer}
+      One way is to count these areas
+      \begin{center}
+        \includegraphics{ch4.31}
+      \end{center}
+      by taking the area of the entire rectangle and subtracting the area of
+      $A$ the upper-left rectangle, $B$ the upper-middle triangle,
+      $D$ the upper-right triangle, $C$ the lower-left triangle, 
+      $E$ the lower-middle triangle, and $F$ the lower-right rectangle       
+      \( (x_1+x_2)(y_1+y_2)-x_2y_1-(1/2)x_1y_1-(1/2)x_2y_2
+              -(1/2)x_2y_2-(1/2)x_1y_1-x_2y_1 \).
+      Simplification gives the determinant formula.
+
+      This determinant is the negative of the one above; the formula
+      distinguishes whether the second column is counterclockwise from
+      the first.  
+     \end{answer}
+
+
+
+
+
+\recommended \item 
+    Do the indicated vector operation, if it is defined.
+    \begin{exparts*}
+      \partsitem \( \colvec[r]{2 \\ 1 \\ 1}
+               +\colvec[r]{3 \\ 0 \\ 4} \)
+      \partsitem \( 5\colvec[r]{4 \\ -1} \)
+      \partsitem \( \colvec[r]{1 \\ 5 \\ 1}
+               -\colvec[r]{3 \\ 1 \\ 1} \)
+      \partsitem \( 7\colvec[r]{2 \\ 1}
+               +9\colvec[r]{3 \\ 5} \)
+      \partsitem \( \colvec[r]{1 \\ 2}
+               +\colvec[r]{1 \\ 2 \\ 3} \)
+      \partsitem \( 6\colvec[r]{3 \\ 1 \\ 1}
+               -4\colvec[r]{2 \\ 0 \\ 3}
+               +2\colvec[r]{1 \\ 1 \\ 5} \)
+    \end{exparts*}
+    \begin{answer}
+      \begin{exparts*}
+        \partsitem \( \colvec[r]{5 \\ 1 \\ 5} \)
+        \partsitem \( \colvec[r]{20 \\ -5} \)
+        \partsitem \( \colvec[r]{-2 \\ 4 \\ 0} \)
+        \partsitem \( \colvec[r]{41 \\ 52} \)
+        \partsitem Not defined.
+        \partsitem \( \colvec[r]{12 \\ 8 \\ 4} \)
+      \end{exparts*}  
+     \end{answer}
+  \recommended \item  \label{exer:SolveInMatrixNotation}
+    Solve each system using matrix notation.
+    Express the solution using vectors.
+    \begin{exparts*}
+      \partsitem \( \begin{linsys}[t]{2}
+                  3x  &+  &6y  &=  &18  \\
+                   x  &+  &2y  &=  &6   
+                   \end{linsys}  \)
+      \partsitem \( \begin{linsys}[t]{2}
+                   x  &+  &y   &=  &1  \\
+                   x  &-  &y   &=  &-1   
+                    \end{linsys}  \)
+      \partsitem \( \begin{linsys}[t]{3}
+                   x_1  &   &     &+  &x_3   &=  &4  \\
+                   x_1  &-  &x_2  &+  &2x_3  &=  &5  \\
+                  4x_1  &-  &x_2  &+  &5x_3  &=  &17  
+                   \end{linsys}  \)
+      \partsitem \( \begin{linsys}[t]{3}
+                   2a   &+  &b    &-  &c     &=  &2  \\
+                   2a   &   &     &+  &c     &=  &3  \\
+                    a   &-  &b    &   &      &=  &0   
+                    \end{linsys}  \)
+      \partsitem \( \begin{linsys}[t]{4}
+                     x  &+  &2y   &-   &z   &    &    &=  &3  \\
+                    2x  &+  &y    &    &    &+   &w   &=  &4  \\
+                     x  &-  &y    &+   &z   &+   &w   &=  &1  
+                    \end{linsys}  \)
+      \partsitem \( \begin{linsys}[t]{4}
+                     x  &   &     &+   &z   &+   &w   &=  &4  \\
+                    2x  &+  &y    &    &    &-   &w   &=  &2  \\
+                    3x  &+  &y    &+   &z   &    &    &=  &7  
+                     \end{linsys}  \)
+    \end{exparts*}
+    \begin{answer}
+      \begin{exparts}
+        \partsitem This reduction
+          \begin{equation*}
+            \begin{amat}[r]{2}
+              3  &6  &18 \\
+              1  &2  &6
+            \end{amat}
+            \grstep{(-1/3)\rho_1+\rho_2}
+            \begin{amat}[r]{2}
+              3  &6  &18 \\
+              0  &0  &0
+            \end{amat}
+          \end{equation*}
+          leaves \( x \) leading and \( y \) free.
+          Making \( y \) the parameter, gives \( x=6-2y \) and this solution
+          set.
+          \begin{equation*}
+            \set{\colvec[r]{6 \\ 0}+\colvec[r]{-2 \\ 1}y
+              \suchthat y\in\Re}
+          \end{equation*}
+        \partsitem A reduction
+          \begin{equation*}
+            \begin{amat}[r]{2}
+              1  &1  &1  \\
+              1  &-1 &-1
+            \end{amat}
+            \grstep{-\rho_1+\rho_2}
+            \begin{amat}[r]{2}
+              1  &1  &1  \\
+              0  &-2 &-2
+            \end{amat}
+          \end{equation*}
+          gives the unique solution \( y=1 \), \( x=0 \).
+          The solution set is this.
+          \begin{equation*}
+            \set{\colvec[r]{0 \\ 1} }
+          \end{equation*}
+        \partsitem Gauss's Method
+          \begin{equation*}
+            \begin{amat}[r]{3}
+              1  &0  &1  &4  \\
+              1  &-1 &2  &5  \\
+              4  &-1 &5  &17
+            \end{amat}
+            \grstep[-4\rho_1+\rho_3]{-\rho_1+\rho_2}
+            \begin{amat}[r]{3}
+              1  &0  &1  &4  \\
+              0  &-1 &1  &1  \\
+              0  &-1 &1  &1
+            \end{amat}     
+            \grstep{-\rho_2+\rho_3}
+            \begin{amat}[r]{3}
+              1  &0  &1  &4  \\
+              0  &-1 &1  &1  \\
+              0  &0  &0  &0
+            \end{amat}
+          \end{equation*}
+          leaves \( x_1 \) and \( x_2 \) leading with \( x_3 \) free.
+          The solution set is this.
+          \begin{equation*}
+            \set{\colvec[r]{4 \\ -1 \\ 0}+\colvec[r]{-1 \\ 1 \\ 1}x_3
+              \suchthat x_3\in\Re}
+          \end{equation*}
+        \partsitem This reduction
+          \begin{align*}
+            \begin{amat}[r]{3}
+              2  &1  &-1 &2  \\
+              2  &0  &1  &3  \\
+              1  &-1 &0  &0
+            \end{amat}
+            &\grstep[-(1/2)\rho_1+\rho_3]{-\rho_1+\rho_2}
+            \begin{amat}[r]{3}
+              2  &1    &-1   &2  \\
+              0  &-1   &2    &1  \\
+              0  &-3/2 &1/2  &-1
+            \end{amat}                                          \\
+            &\grstep{(-3/2)\rho_2+\rho_3}
+            \begin{amat}[r]{3}
+              2  &1  &-1   &2  \\
+              0  &-1 &2    &1  \\
+              0  &0  &-5/2 &-5/2
+            \end{amat}
+          \end{align*}
+          shows that the solution set is a singleton set.
+          \begin{equation*}
+            \set{\colvec[r]{1 \\ 1 \\ 1}}
+          \end{equation*}
+        \partsitem This reduction is easy
+          \begin{align*}
+            \begin{amat}[r]{4}
+              1  &2  &-1 &0  &3 \\
+              2  &1  &0  &1  &4 \\
+              1  &-1 &1  &1  &1
+            \end{amat}
+            &\grstep[-\rho_1+\rho_3]{-2\rho_1+\rho_2}
+            \begin{amat}[r]{4}
+              1  &2  &-1 &0  &3  \\
+              0  &-3 &2  &1  &-2 \\
+              0  &-3 &2  &1  &-2
+            \end{amat}                                       \\
+            &\grstep{-\rho_2+\rho_3}
+            \begin{amat}[r]{4}
+              1  &2  &-1 &0  &3  \\
+              0  &-3 &2  &1  &-2 \\
+              0  &0  &0  &0  &0
+            \end{amat}
+          \end{align*}
+          and ends with \( x \) and $y$ leading while \( z \) and \( w \) are
+          free.
+          Solving for \( y \) gives \( y=(2+2z+w)/3 \) and substitution shows
+          that \( x+2(2+2z+w)/3-z=3 \) so \( x=(5/3)-(1/3)z-(2/3)w \),
+          making this the solution set.
+          \begin{equation*}
+            \set{\colvec[r]{5/3 \\ 2/3 \\ 0 \\ 0}
+                 +\colvec[r]{-1/3 \\ 2/3 \\ 1 \\ 0}z
+                 +\colvec[r]{-2/3 \\ 1/3 \\ 0 \\ 1}w
+                 \suchthat z,w\in\Re}
+          \end{equation*}
+        \partsitem The reduction
+          \begin{align*}
+            \begin{amat}[r]{4}
+              1  &0  &1  &1  &4 \\
+              2  &1  &0  &-1 &2 \\
+              3  &1  &1  &0  &7
+            \end{amat}
+            &\grstep[-3\rho_1+\rho_3]{-2\rho_1+\rho_2}
+            \begin{amat}[r]{4}
+              1  &0  &1  &1  &4 \\
+              0  &1  &-2 &-3 &-6\\
+              0  &1  &-2 &-3 &-5
+            \end{amat}                                       \\
+            &\grstep{-\rho_2+\rho_3}
+            \begin{amat}[r]{4}
+              1  &0  &1  &1  &4 \\
+              0  &1  &-2 &-3 &-6\\
+              0  &0  &0  &0  &1
+            \end{amat}
+          \end{align*}
+          shows that there is no solution\Dash the solution set is empty.
+      \end{exparts}  
+     \end{answer}
+  \recommended \item \label{exer:SlvMatNot}
+    Solve each system using matrix notation.
+    Give each solution set in vector notation.
+    \begin{exparts*}
+      \partsitem \( \begin{linsys}[t]{3}
+                  2x  &+  &y  &-  &z  &=  &1  \\
+                  4x  &-  &y  &   &   &=  &3  
+                \end{linsys}  \)
+      \partsitem \( \begin{linsys}[t]{4}
+                   x  &   &   &-  &z  &   &   &=  &1  \\
+                      &   &y  &+  &2z &-  &w  &=  &3  \\
+                   x  &+  &2y &+  &3z &-  &w  &=  &7  
+               \end{linsys}  \)
+      \partsitem \( \begin{linsys}[t]{4}
+                   x  &-  &y  &+  &z  &   &   &=  &0  \\
+                      &   &y  &   &   &+  &w  &=  &0  \\
+                  3x  &-  &2y &+  &3z &+  &w  &=  &0  \\
+                      &   &-y &   &   &-  &w  &=  &0  
+               \end{linsys}  \)
+      \partsitem \( \begin{linsys}[t]{5}
+                   a  &+  &2b &+  &3c &+  &d  &-  &e  &=  &1  \\
+                  3a  &-  &b  &+  &c  &+  &d  &+  &e  &=  &3  
+               \end{linsys}  \)
+    \end{exparts*}
+    \begin{answer}
+      \begin{exparts}
+      \partsitem The reduction
+        \begin{equation*}
+          \begin{amat}[r]{3}
+            2  &1  &-1  &1  \\
+            4  &-1 &0   &3
+          \end{amat}
+          \grstep{-2\rho_1+\rho_2}
+          \begin{amat}[r]{3}
+            2  &1  &-1  &1  \\
+            0  &-3 &2   &1
+          \end{amat}
+        \end{equation*}
+        ends with \( x \) and \( y \) leading, and with \( z \) free.
+        Solving for \( y \) gives \( y=(1-2z)/(-3) \), and then substitution
+        \( 2x+(1-2z)/(-3)-z=1 \) shows that \( x=((4/3)+(1/3)z)/2 \).
+        Hence the solution set is this.
+        \begin{equation*}
+          \set{\colvec[r]{2/3 \\ -1/3 \\ 0}
+               +\colvec[r]{1/6 \\ 2/3 \\ 1}z
+              \suchthat z\in\Re}
+        \end{equation*}
+      \partsitem This application of Gauss's Method
+        \begin{align*}
+          \begin{amat}[r]{4}
+            1  &0  &-1  &0  &1 \\
+            0  &1  &2   &-1 &3 \\
+            1  &2  &3   &-1 &7
+          \end{amat}
+          &\grstep{-\rho_1+\rho_3}
+          \begin{amat}[r]{4}
+            1  &0  &-1  &0  &1 \\
+            0  &1  &2   &-1 &3 \\
+            0  &2  &4   &-1 &6
+          \end{amat}                                   \\
+          &\grstep{-2\rho_2+\rho_3}
+          \begin{amat}[r]{4}
+            1  &0  &-1  &0  &1 \\
+            0  &1  &2   &-1 &3 \\
+            0  &0  &0   &1  &0
+          \end{amat}
+        \end{align*}
+        leaves  \( x \), \( y \), and \( w \)  leading.
+        The solution set is here.
+        \begin{equation*}
+          \set{\colvec[r]{1 \\ 3 \\ 0 \\ 0}
+               +\colvec[r]{1 \\ -2 \\ 1 \\ 0}z
+              \suchthat z\in\Re}
+        \end{equation*}
+      \partsitem This row reduction
+        \begin{align*}
+          \begin{amat}[r]{4}
+            1  &-1 &1   &0  &0 \\
+            0  &1  &0   &1  &0 \\
+            3  &-2 &3   &1  &0 \\
+            0  &-1 &0   &-1 &0
+          \end{amat}
+          &\grstep{-3\rho_1+\rho_3}
+          \begin{amat}[r]{4}
+            1  &-1 &1   &0  &0 \\
+            0  &1  &0   &1  &0 \\
+            0  &1  &0   &1  &0 \\
+            0  &-1 &0   &-1 &0
+          \end{amat}                                       \\
+          &\grstep[\rho_2+\rho_4]{-\rho_2+\rho_3}
+          \begin{amat}[r]{4}
+            1  &-1 &1   &0  &0 \\
+            0  &1  &0   &1  &0 \\
+            0  &0  &0   &0  &0 \\
+            0  &0  &0   &0  &0
+          \end{amat}
+        \end{align*}
+        ends with \( z \) and \( w \) free.
+        We have this solution set.
+        \begin{equation*}
+          \set{\colvec[r]{0 \\ 0 \\ 0 \\ 0}
+               +\colvec[r]{-1 \\ 0 \\ 1 \\ 0}z
+               +\colvec[r]{-1 \\ -1 \\ 0 \\ 1}w
+              \suchthat z,w\in\Re}
+        \end{equation*}
+      \partsitem Gauss's Method done in this way
+        \begin{equation*}
+          \begin{amat}[r]{5}
+            1  &2  &3   &1  &-1 &1  \\
+            3  &-1 &1   &1  &1  &3
+          \end{amat}
+          \grstep{-3\rho_1+\rho_2}
+          \begin{amat}[r]{5}
+            1  &2  &3   &1  &-1 &1  \\
+            0  &-7 &-8  &-2 &4  &0
+          \end{amat}
+        \end{equation*}
+        ends with \( c \), \( d \), and \( e \) free.
+        Solving for \( b \) shows that \( b=(8c+2d-4e)/(-7) \) and then 
+        substitution
+        \( a+2(8c+2d-4e)/(-7)+3c+1d-1e=1 \) shows that 
+        \( a=1-(5/7)c-(3/7)d-(1/7)e \) and we have the solution set.
+        \begin{equation*}
+          \set{\colvec[r]{1 \\ 0 \\ 0 \\ 0 \\ 0}
+               +\colvec[r]{-5/7 \\ -8/7 \\ 1 \\ 0 \\ 0}c
+               +\colvec[r]{-3/7 \\ -2/7 \\ 0 \\ 1 \\ 0}d
+               +\colvec[r]{-1/7 \\ 4/7 \\ 0 \\ 0 \\ 1}e
+              \suchthat c,d,e\in\Re}
+        \end{equation*}
+    \end{exparts}  
+   \end{answer}
+  \recommended \item 
+    The vector is in the set.
+    What value of the parameters produces that vector?
+    \begin{exparts}
+      \partsitem $\colvec[r]{5 \\ -5}$,
+        $\set{\colvec[r]{1 \\ -1}k\suchthat k\in\Re}$
+      \partsitem $\colvec[r]{-1 \\ 2 \\ 1}$,
+        $\set{\colvec[r]{-2 \\ 1 \\ 0}i
+           +\colvec[r]{3 \\ 0 \\ 1}j\suchthat i,j\in\Re}$
+      \partsitem $\colvec[r]{0 \\ -4 \\ 2}$,
+        $\set{\colvec[r]{1 \\ 1 \\ 0}m
+               +\colvec[r]{2 \\ 0 \\ 1}n\suchthat m,n\in\Re}$
+    \end{exparts}
+    \begin{answer}
+      For each problem we get a system of linear equations by looking at the 
+      equations of components.
+      \begin{exparts}
+       \partsitem $k=5$
+       \partsitem The second components show that $i=2$, the third
+       components show that $j=1$.
+       \partsitem $m=-4$, $n=2$
+      \end{exparts} 
+    \end{answer}
+  \item 
+    Decide if the vector is in the set.
+    \begin{exparts}
+      \partsitem $\colvec[r]{3 \\ -1}$,
+        $\set{\colvec[r]{-6 \\ 2}k\suchthat k\in\Re}$
+      \partsitem $\colvec[r]{5 \\ 4}$,
+        $\set{\colvec[r]{5 \\ -4}j\suchthat j\in\Re}$
+      \partsitem $\colvec[r]{2 \\ 1 \\ -1}$,
+        $\set{\colvec[r]{0 \\ 3 \\ -7}
+             +\colvec[r]{1 \\ -1 \\ 3}r\suchthat r\in\Re}$
+      \partsitem $\colvec[r]{1 \\ 0 \\ 1}$,
+        $\set{\colvec[r]{2 \\ 0 \\ 1}j
+            +\colvec[r]{-3 \\ -1 \\ 1}k\suchthat j,k\in\Re}$
+    \end{exparts}
+    \begin{answer}
+      For each problem we get a system of linear equations by looking at the 
+      equations of components.
+      \begin{exparts}
+        \partsitem Yes; take $k=-1/2$.
+        \partsitem No; the system with equations $5=5\cdot j$ and
+            $4=-4\cdot j$ has no solution.
+        \partsitem Yes; take $r=2$.
+        \partsitem No.
+           The second components give $k=0$.
+           Then the third components give $j=1$.
+           But the first components don't check. 
+      \end{exparts}
+     \end{answer}
+  \item \cite{Cleary}
+    A farmer with 1200 acres is considering planting three different crops, 
+    corn, soybeans, and oats.   
+    The farmer wants to use all~$1200$ acres.  
+    Seed corn costs \$$20$ per acre, while soybean and oat seed cost 
+    \$$50$ and~\$$12$ per acre respectively.  
+    The farmer has \$$40\,000$ available to buy seed and intends to 
+    spend it all.
+    \begin{exparts}  
+      \item Use the information above to formulate two linear equations 
+        with three unknowns and solve it.
+     \item Solutions to the system are choices that the farmer can make.  
+        Write down two reasonable solutions.
+     \item Suppose that in the fall when the crops mature, the farmer 
+        can bring in revenue of \$$100$ per acre for corn, 
+        \$$300$ per acre for soybeans and \$$80$ per acre for oats.  
+        Which of your two solutions in the prior part would have resulted 
+        in a larger revenue? 
+    \end{exparts}
+    \begin{answer}
+      \begin{exparts}
+        \item Let $c$ be the number of acres of corn, $s$ be the number of 
+          acres of soy, and $a$ be the number of acres of oats.
+          \begin{equation*}
+            \begin{linsys}{3}
+              c   &+   &s   &+   &a   &=   &1200 \\ 
+            20c   &+   &50s &+   &12a &=   &40\,000  
+            \end{linsys}
+            \grstep{-20\rho_1+\rho_2}
+            \begin{linsys}{3}
+              c   &+   &s   &+   &a   &=   &1200 \\ 
+                  &    &30s &-   &8a  &=   &16\,000  
+            \end{linsys}
+          \end{equation*}
+          To describe the solution set we can parametrize using $a$.
+          \begin{equation*}
+            \set{\colvec{c \\ s \\ a}
+                 =\colvec{20\,000/30 \\ 16\,000/30 \\ 0}
+                  +\colvec{-38/30 \\ 8/30 \\ 1}a
+                 \suchthat a\in\Re}
+          \end{equation*}
+        \item There are many answers possible here. 
+          For instance we can take $a=0$ to get $c=20\,000/30\approx 666.66$ and
+          $s=16000/30\approx 533.33$.
+          Another example is to take $a=20\,000/38\approx 526.32$, giving
+          $c=0$ and $s=7360/38\approx 193.68$.
+        \item Plug your answers from the prior part into 
+          $100c+300s+80a$.
+      \end{exparts}
+    \end{answer}
+  \item 
+    Parametrize the solution set of this one-equation system.
+    \begin{equation*}
+      x_1+x_2+\cdots+x_n=0
+    \end{equation*}
+    \begin{answer}
+      This system has one equation.
+      The leading variable is \( x_1 \), the other variables are free.
+      \begin{equation*}
+        \set{\colvec{-1 \\ 1 \\ \vdotswithin{-1} \\ 0}x_2
+             +\cdots+
+             \colvec{-1 \\ 0 \\ \vdotswithin{-1} \\ 1}x_n
+             \suchthat x_2,\ldots,x_n\in\Re}
+      \end{equation*}  
+     \end{answer}
+  \recommended \item 
+    \begin{exparts}
+    \partsitem Apply Gauss's Method to the left-hand side to solve
+      \begin{equation*}
+        \begin{linsys}{4}
+          x  &+  &2y  &    &    &-   &w   &=   &a   \\
+         2x  &   &    &+   &z   &    &    &=   &b   \\
+          x  &+  &y   &    &    &+   &2w  &=   &c   
+        \end{linsys}
+      \end{equation*}
+      for \( x \), \( y \), \( z \), and \(  w \), in terms of the 
+      constants $a$, $b$, and $c$.
+    \partsitem Use your answer from the prior part to solve this.
+      \begin{equation*}
+        \begin{linsys}{4}
+          x  &+  &2y  &    &    &-   &w   &=   &3   \\
+         2x  &   &    &+   &z   &    &    &=   &1   \\
+          x  &+  &y   &    &    &+   &2w  &=   &-2
+        \end{linsys}
+      \end{equation*}
+    \end{exparts}
+    \begin{answer}
+      \begin{exparts}
+        \partsitem Gauss's Method here gives
+          \begin{align*}
+            \begin{amat}{4}
+              1  &2  &0  &-1  &a  \\
+              2  &0  &1  &0   &b  \\
+              1  &1  &0  &2   &c
+            \end{amat}
+            &\grstep[-\rho_1+\rho_3]{-2\rho_1+\rho_2}
+            \begin{amat}{4}
+              1  &2  &0  &-1  &a  \\
+              0  &-4 &1  &2   &-2a+b  \\
+              0  &-1 &0  &3   &-a+c
+            \end{amat}                                  \\
+            &\grstep{-(1/4)\rho_2+\rho_3}
+            \begin{amat}{4}
+              1  &2  &0    &-1  &a  \\
+              0  &-4 &1    &2   &-2a+b  \\
+              0  &0  &-1/4 &5/2 &-(1/2)a-(1/4)b+c
+            \end{amat}
+          \end{align*}
+          leaving \( w \) free.
+          Solve: \(  z=2a+b-4c+10w \),
+          and \( -4y=-2a+b-(2a+b-4c+10w)-2w \) so
+          \( y=a-c+3w \), and
+          \( x=a-2(a-c+3w)+w=-a+2c-5w. \)
+          Therefore the solution set is this.
+          \begin{equation*}
+             \set{\colvec{-a+2c \\ a-c \\ 2a+b-4c \\ 0}
+                  +\colvec{-5 \\ 3 \\ 10 \\ 1}w
+                  \suchthat w\in\Re}
+          \end{equation*}
+        \partsitem Plug in with \( a=3 \), \( b=1 \), and \( c=-2 \).
+          \begin{equation*}
+             \set{\colvec[r]{-7 \\ 5 \\ 15 \\ 0}
+                  +\colvec[r]{-5 \\ 3 \\ 10 \\ 1}w
+                  \suchthat w\in\Re}
+          \end{equation*}
+      \end{exparts}  
+     \end{answer}
+  \recommended \item 
+    Why is the comma needed in the notation `\( a_{i,j} \)'
+    for matrix entries?
+    \begin{answer}
+       Leaving the comma out, say by writing \( a_{123} \),
+       is ambiguous because it could mean $a_{1,23}$ or $a_{12,3}$.  
+    \end{answer}
+  \recommended \item 
+    Give the \( \nbyn{4} \) matrix whose
+    \( i,j \)-th entry is
+    \begin{exparts*}
+      \partsitem \( i+j \);
+      \partsitem \( -1 \) to the \( i+j \) power.
+    \end{exparts*}
+    \begin{answer}
+      \begin{exparts*}
+        \partsitem \(
+           \begin{mat}[r]
+             2  &3  &4  &5  \\
+             3  &4  &5  &6  \\
+             4  &5  &6  &7  \\
+             5  &6  &7  &8
+           \end{mat} \)
+        \partsitem \(
+           \begin{mat}[r]
+             1  &-1  &1   &-1  \\
+            -1  &1   &-1  &1  \\
+             1  &-1  &1   &-1  \\
+            -1  &1   &-1  &1
+           \end{mat} \)
+      \end{exparts*}  
+    \end{answer}
+  \item  
+    For any matrix \( A \), the 
+    \definend{transpose}\index{transpose}
+    \index{matrix!transpose}
+    of \( A \), written
+    \( \trans{A} \), is the matrix whose columns are the rows of \( A \).
+    Find the transpose of each of these.
+    \begin{exparts*}
+      \partsitem \( \begin{mat}[r]
+                  1  &2  &3  \\
+                  4  &5  &6
+               \end{mat}  \)
+      \partsitem \( \begin{mat}[r]
+                  2  &-3 \\
+                  1  &1
+               \end{mat}  \)
+      \partsitem \( \begin{mat}[r]
+                  5  &10 \\
+                 10  &5
+               \end{mat}  \)
+      \partsitem \( \colvec[r]{1 \\ 1 \\ 0} \)
+    \end{exparts*}
+    \begin{answer}
+      \begin{exparts*}
+        \partsitem \( \begin{mat}[r]
+                   1  &4  \\
+                   2  &5  \\
+                   3  &6
+                 \end{mat}  \)
+        \partsitem \( \begin{mat}[r]
+                   2  &1  \\
+                  -3  &1
+                 \end{mat}  \)
+        \partsitem \( \begin{mat}[r]
+                   5  &10 \\
+                  10  &5
+                 \end{mat}  \)
+        \partsitem \( \rowvec{1 &1 &0}  \)
+      \end{exparts*}  
+     \end{answer}
+  \recommended \item 
+    \begin{exparts}
+      \partsitem Describe all functions \( f(x)=ax^2+bx+c \) 
+        such that \( f(1)=2 \) and \( f(-1)=6 \).
+      \partsitem Describe all functions \( f(x)=ax^2+bx+c \) 
+        such that \( f(1)=2 \).
+    \end{exparts}
+    \begin{answer}
+      \begin{exparts}
+        \partsitem Plugging in \( x=1 \) and \( x=-1 \) gives
+          \begin{equation*}
+            \begin{linsys}{3}
+              a  &+  &b   &+  &c  &=  &2  \\
+              a  &-  &b   &+  &c  &=  &6  
+            \end{linsys}
+            \grstep{-\rho_1+\rho_2}
+            \begin{linsys}{3}
+              a  &+  &b   &+  &c  &=  &2  \\
+                 &   &-2b &   &   &=  &4  
+              \end{linsys}
+          \end{equation*}
+          so the set of functions is
+          \( \set{f(x)=(4-c)x^2-2x+c\suchthat c\in\Re} \).
+        \partsitem Putting in \( x=1 \) gives
+          \begin{equation*}
+            \begin{linsys}{3}
+              a  &+  &b   &+  &c  &=  &2  
+            \end{linsys}
+          \end{equation*}
+          so the set of functions is
+          \( \set{f(x)=(2-b-c)x^2+bx+c\suchthat b,c\in\Re} \).
+      \end{exparts}  
+    \end{answer}
+  \item Show that any set of five points from the plane \( \Re^2 \) lie on a
+    common conic section, that is, they all satisfy some equation of the
+    form \( ax^2+by^2+cxy+dx+ey+f=0 \) where some of \( a,\,\ldots\,,f \)
+    are nonzero.
+    \begin{answer}
+      On plugging in the five pairs $(x,y)$ we get a system with the
+      five equations and six unknowns $a$, \ldots, $f$.
+      Because there are more unknowns than equations, if no inconsistency
+      exists among the equations then there are infinitely many solutions
+      (at least one variable will end up free).
+
+      But no inconsistency can exist because $a=0$, \ldots, $f=0$ is a 
+      solution (we are only using this zero solution to show that the system
+      is consistent\Dash the prior paragraph shows that
+      there are nonzero solutions). 
+    \end{answer}
+  \item 
+    Make up a four equations/four unknowns system having
+    \begin{exparts}
+      \partsitem a one-parameter solution set;
+      \partsitem a two-parameter solution set;
+      \partsitem a three-parameter solution set.
+    \end{exparts}
+    \begin{answer}
+      \begin{exparts}
+      \partsitem Here is one\Dash the fourth equation is redundant 
+        but still OK.
+        \begin{equation*}
+          \begin{linsys}{4}
+             x  &+  &y  &-  &z  &+  &w  &=  &0  \\
+                &   &y  &-  &z  &   &   &=  &0  \\
+                &   &   &   &2z &+  &2w &=  &0  \\
+                &   &   &   &z  &+  &w  &=  &0
+          \end{linsys}
+        \end{equation*}
+      \partsitem Here is one.
+        \begin{equation*}
+          \begin{linsys}{4}
+             x  &+  &y  &-  &z  &+  &w  &=  &0  \\
+                &   &   &   &   &   &w  &=  &0  \\
+                &   &   &   &   &   &w  &=  &0  \\
+                &   &   &   &   &   &w  &=  &0
+          \end{linsys}
+        \end{equation*}
+      \partsitem This is one.
+        \begin{equation*}
+          \begin{linsys}{4}
+             x  &+  &y  &-  &z  &+  &w  &=  &0  \\
+             x  &+  &y  &-  &z  &+  &w  &=  &0  \\
+             x  &+  &y  &-  &z  &+  &w  &=  &0  \\
+             x  &+  &y  &-  &z  &+  &w  &=  &0 
+          \end{linsys}
+        \end{equation*}
+    \end{exparts}  
+   \end{answer}
+  \puzzle \item 
+    \cite{Shepelev}
+    This  puzzle  is  from  a  Russian   web-site
+    \texttt{http://www.arbuz.uz/}  and  there are many solutions
+    to it, but mine uses  linear  algebra  and  is  very
+    naive.   There's   a   planet  inhabited  by  arbuzoids
+   (watermeloners, to  translate  from  Russian). 
+   Those creatures are found in three colors: red, green and blue.  
+   There  are  $13$~red
+   arbuzoids,  $15$~blue  ones, and $17$~green. 
+   When
+   two differently colored arbuzoids meet,  they
+   both change to the third color.
+
+   The question is, can it ever happen that all
+   of them assume the same color?
+    \begin{answer}
+       \answerasgiven
+       My solution was to define the numbers  of  arbuzoids
+       as $3$-dimensional vectors, and express all possible
+       elementary transitions as such vectors, too:
+       \begin{center}
+         \begin{tabular}{rr}
+           R: &$13$  \\
+           G: &$15$  \\
+           B: &$17$
+         \end{tabular}
+         \qquad
+         Operations:
+         $\colvec[r]{-1 \\ -1 \\ 2}$, 
+         $\colvec[r]{-1 \\ 2 \\ -1}$, 
+         and 
+         $\colvec[r]{2 \\ -1 \\ -1}$
+       \end{center}
+       Now, it is enough to check whether the  solution  to
+       one  of  the  following  systems of linear equations
+       exists:
+       \begin{equation*}
+         \colvec[r]{13 \\ 15 \\ 17}
+         +x\colvec[r]{-1 \\ -1  \\ 2}
+         +y\colvec[r]{-1 \\ 2 \\ -1}
+         +\colvec[r]{2 \\ -1 \\ -1}
+         =\colvec[r]{0 \\ 0 \\ 45}
+         \qquad
+         \text{(or $\colvec[r]{0 \\ 45 \\ 0}$ or $\colvec[r]{45 \\ 0 \\ 0}$)}
+       \end{equation*}
+       Solving
+       \begin{equation*}
+         \begin{amat}[r]{3}
+          -1  &-1 &2  &-13  \\
+          -1  &2  &-1 &-15  \\
+           2  &-1 &-1 &28
+         \end{amat}
+         \grstep[2\rho_1+\rho_3]{-\rho_1+\rho_2}
+         \repeatedgrstep{\rho_2+\rho_3}
+         \begin{amat}[r]{3}
+          -1  &-1 &2  &-13  \\
+           0  &3  &-3 &-2  \\
+           0  &0  &0  &0
+         \end{amat}
+       \end{equation*}
+       gives $y+2/3=z$ so if the number of transformations $z$ is an integer
+       then $y$ is not.
+       The other two systems give similar conclusions so there is no
+       solution.
+    \end{answer}
+  \puzzle \item 
+    \cite{USSROlympiad174}
+    \begin{exparts}
+      \partsitem Solve the system of equations.
+        \begin{equation*}
+          \begin{linsys}{2}
+            ax  &+  &y  &=  &a^2  \\
+             x  &+  &ay &=  &1
+         \end{linsys}
+        \end{equation*}
+        For what values of $a$ does the system fail to have solutions, and
+        for what values of $a$ are there infinitely many solutions?
+      \partsitem Answer the above question for the system.
+        \begin{equation*}
+          \begin{linsys}{2}
+            ax  &+  &y  &=  &a^3  \\    
+             x  &+  &ay &=  &1
+          \end{linsys}
+        \end{equation*}
+    \end{exparts}
+    \begin{answer}
+       \answerasgiven
+       \begin{exparts}
+        \partsitem Formal solution of the system yields
+          \begin{equation*}
+            x=\frac{a^3-1}{a^2-1}  
+            \qquad
+            y=\frac{-a^2+a}{a^2-1}.
+          \end{equation*}
+          If $a+1\neq 0$ and $a-1\neq 0$, then the system has the single
+          solution
+          \begin{equation*}
+            x=\frac{a^2+a+1}{a+1}
+            \qquad
+            y=\frac{-a}{a+1}.
+          \end{equation*}
+          If $a=-1$, or if $a=+1$, then the formulas are meaningless; in the
+          first instance we arrive at the system
+          \begin{equation*}
+            \left\{ 
+            \begin{linsys}{2}
+              -x &+  &y  &=  &1 \\
+               x &-  &y  &=  &1
+            \end{linsys}\right.
+          \end{equation*}
+          which is a contradictory system.
+          In the second instance we have
+          \begin{equation*}
+            \left\{
+            \begin{linsys}{2}
+               x &+  &y  &=  &1 \\
+               x &+  &y  &=  &1
+            \end{linsys}\right.
+          \end{equation*}
+          which has an infinite number of solutions (for example, for 
+          $x$ arbitrary, $y=1-x$).
+        \partsitem Solution of the system yields
+          \begin{equation*}
+            x=\frac{a^4-1}{a^2-1}
+            \qquad
+            y=\frac{-a^3+a}{a^2-1}.
+          \end{equation*}
+          Here, is $a^2-1\neq 0$, the system has the single solution
+          $x=a^2+1$, $y=-a$.
+          For $a=-1$ and $a=1$, we obtain the systems
+          \begin{equation*}
+            \left\{
+            \begin{linsys}{2}
+              -x &+  &y  &=  &-1 \\
+               x &-  &y  &=  &1
+            \end{linsys}\right.
+            \qquad
+            \left\{
+            \begin{linsys}{2}
+               x &+  &y  &=  &1 \\
+               x &+  &y  &=  &1
+            \end{linsys}\right.
+         \end{equation*}
+         both of which have an infinite number of solutions.
+      \end{exparts}
+    \end{answer}
+  \puzzle \item 
+    \cite{MathMag52p48}
+    In air a gold-sur\-faced sphere weighs \( 7588 \)
+    grams.
+    It is known that it may contain one or more of the metals aluminum,
+    copper, silver, or lead.
+    When weighed successively under standard conditions in water, benzene,
+    alcohol, and glycerin its respective weights are \( 6588 \), \( 6688 \),
+    \( 6778 \), and \( 6328 \) grams.
+    How much, if any, of the forenamed metals does it contain if the
+    specific gravities of the designated substances are taken to be as follows?
+    \begin{center}
+       \begin{tabular}{lrclr}
+         Aluminum  &\( 2.7 \)
+            &\makebox[3em]{\mbox{}\hfill\mbox{}} &Alcohol &0.81 \\
+         Copper    &\( 8.9 \)  &     &Benzene   &\( 0.90 \) \\
+         Gold      &\( 19.3 \) &     &Glycerin &\( 1.26 \) \\
+         Lead      &\( 11.3 \) &     &Water     &\( 1.00 \) \\
+         Silver    &\( 10.8 \)
+       \end{tabular}
+    \end{center}
+    \begin{answer}
+      \answerasgiven
+      Let \( u \), \( v \), \( x \), \( y \), \( z \) be the volumes in
+      \( {\rm cm}^3 \) of Al, Cu, Pb, Ag, and Au, respectively, contained in
+      the sphere, which we assume to be not hollow.
+      Since the loss of weight in water (specific gravity \( 1.00 \)) is
+      \( 1000 \) grams, the volume of the sphere is \( 1000\mbox{ cm}^3 \).
+      Then the data, some of which is superfluous, though consistent, leads to
+      only \( 2 \) independent equations, one relating volumes and the
+      other, weights.
+      \begin{equation*}
+        \begin{linsys}{5}
+           u  &+  &v    &+  &x     &+  &y     &+  &z     &=  &1000  \\
+        2.7u  &+  &8.9v &+  &11.3x &+  &10.5y &+  &19.3z &=  &7558
+        \end{linsys}
+      \end{equation*}
+      Clearly the sphere must contain some aluminum to bring its mean specific
+      gravity below the specific gravities of all the other metals.
+      There is no unique result to this part of the problem, for the amounts
+      of three metals may be chosen arbitrarily, provided that the choices
+      will not result in negative amounts of any metal.
+
+      If the ball contains only aluminum and gold, there are
+      \( 294.5\mbox{ cm}^3 \) of gold and \( 705.5\mbox{ cm}^3 \) of aluminum.
+      Another possibility is \( 124.7\mbox{ cm}^3 \) each of Cu, Au, Pb, and
+      Ag and \( 501.2\mbox{ cm}^3  \) of Al.   
+    \end{answer}
+\end{exercises}
+
+
+
+  
+\item 
+    Prove that each operation of Gauss's Method is reversible.
+    That is, show that if two systems are related by a row operation
+    $S_1\rightarrow S_2$ then there is a row operation to go back
+    $S_2\rightarrow S_1$.
+    \begin{answer}
+      Reverse a row swap $\rho_i\leftrightarrow\rho_j$ by swapping 
+      back $\rho_j\leftrightarrow\rho_i$.
+      Reverse the $k\rho_i$ step of multiplying  \( k\neq 0  \) 
+      on both sides of a row
+      by  dividing through~$(1/k)\rho_i$.
+
+      The row combination case is the nontrivial one.
+      The operation $k\rho_i+\rho_j$
+      results in this $j$-th row.
+      \begin{equation*}
+        k\cdot a_{i,1}+a_{j,1}+\cdots+k\cdot a_{i,n}+a_{j,n}=k\cdot d_i+d_j
+      \end{equation*}
+      The $i$-th row unchanged because of the $i\neq j$ restriction.
+      Because the $i$-th row is unchanged, the operation $-k\rho_i+\rho_j$ 
+      returns the $j$-th row to its original state.
+
+      (Observe that the \( i=j \) conditino on the $k\rho_i+\rho_j$ 
+       is needed, or else this could happen
+       \begin{equation*}
+         \begin{linsys}{2}
+           3x  &+  &2y  &=  &7  
+         \end{linsys}
+         \grstep{2\rho_1+\rho_1}
+         \begin{linsys}{2}
+           9x  &+  &6y  &=  &21 
+          \end{linsys}                 
+         \grstep{-2\rho_1+\rho_1}
+         \begin{linsys}{2}
+          -9x  &-  &6y  &=  &-21 
+         \end{linsys}
+       \end{equation*}
+       and so the result wouldn't hold.)
+    \end{answer}
+ 
+
+S06 (Fall 2015)
+
+
+
+
+
+Given the following system
+\begin{eqnarray*}
+x+z=1\\
+y+z=1
+\end{eqnarray*}
+\begin{enumerate}
+\item[a.] \textit{(2 marks)} Express a general solution of this system as a particular solution of the system plus a general solution of the associated homogeneous system.
+\item[b.] \textit{(2 marks)} Give a geometric interpretation of the result of part a.  Discuss the general solution geometrically with respect to the associated homogeneous system.
+\end{enumerate}
+
+
+
+Determine whether the set $\{ 1, e^x, \arctan x\}$ is linearly independent on $\mathbb{R}^+$
+
+S07 (Fall 2015)
+
+
+
+
+
+
+Winter 2015
+
+Determine whether the following is a vector space:
+\[
+\mathcal{Y}=\left\{(1,y)\;|\;y\in\mathbb{R}\right\}
+\]
+with the following addition and scalar multiplication.
+\[
+(1, y_1)+(1, y_2) = (1, y_1^2+y_2^2)
+\]
+and
+\[
+k(1,y)=(1,ky)
+\]
+If it is not a vector space, clearly state and show which axiom fails.
+
+
+Find all values of $z$ such that the triangle with vertices $A(-1, 2, -3)$, $B(4,-5,6)$ and $C(1, -2, z)$ has area equal to $31$.
+
+In a vector space, the span of any subset is a subspace. In addition, the span of a subset of a vector space is the smallest subspace containing all vectors of the subset.
+
+
+Let $\mathcal{H}=\{A |\; \text{$A$ is a $2\times 2$ matrix and $A^T=-A$} \}$
+with the usual addition and scalar multiplication.
+\begin{enumerate}
+\item[a.] \textit{(2 marks)} Give an example of a non-zero matrix in $\mathcal{H}$. Justify.
+\item[b.] \textit{(2 marks)} Does $\mathcal{H}$ satisfy closure under vector addition? Justify.
+\item[c.] \textit{(2 marks)} Does $\mathcal{H}$ contain the zero vector of $\mathcal{M}_{2\times 2}$ (the vector space of $2\times2$ matrices)? Justify.
+\item[d.] \textit{(2 marks)} Does $\mathcal{H}$ satisfy closure under scalar multiplication? Justify.
+\item[e.] \textit{(2 marks)} Is $\mathcal{H}$ a vector subspace of $\mathcal{M}_{2\times 2}$ (the vector space of $2\times2$ matrices)? Justify.
+
+S05 Fall2014
+
+
+
+
+Show that $||\vec{u}+\vec{v}||^2+||\vec{u}-\vec{v}||^2 = 2(||\vec{u}||^2+||\vec{v}||^2)$. \textit{Bonus (1 mark): what does that say about parallelograms?}
+
+
+
+
+
+Given
+\[
+A(1,2),\;B(-1,1),\;C(3,1)  
+\]
+\begin{enumerate}
+\item[a.] \textit{(3 marks)} Find the area of the parallelogram generated by $\vec{AB}$ and $\vec{AC}$.
+\item[b.] \textit{(1 mark)} Find the area of the triangle with vertices $A$, $B$ and $C$.
+\item[c.] \textit{(2 marks)} Find the length of the altitude of the triangle $ABC$ from vertex $C$ to side $AB$.
+\item[d.] \textit{(1 mark)} Find the shortest distance from $C$ to the line that contains $A$ and $B$.
+\end{enumerate}
+
+Let $\mathcal{H}=\left\{A=\begin{bmatrix}
+a & b\\
+c & d
+\end{bmatrix}
+\Bigg|\; A\begin{bmatrix}
+1\\
+1
+\end{bmatrix}
+=
+\begin{bmatrix}
+0\\
+0
+\end{bmatrix} \right\}$
+with the usual addition and scalar multiplicatio
+\begin{enumerate}
+\item[a.] \textit{(2 marks)} Give an example of a non-zero matrix in $\mathcal{H}$? Justify.
+\item[b.] \textit{(2 marks)} Does $\mathcal{H}$ satisfy closure under vector addition? Justify.
+\item[c.] \textit{(2 marks)} Does $\mathcal{H}$ contain the zero vector of $\mathcal{M}_{2\times 2}$ (the vector space of $2\times2$ matrices)? Justify.
+\item[d.] \textit{(2 marks)} Does $\mathcal{H}$ satisfy closure under scalar multiplication? Justify.
+\item[e.] \textit{(2 marks)} Is $\mathcal{H}$ a vector subspace of $\mathcal{M}_{2\times 2}$ (the vector space of $2\times2$ matrices)? Justify.
+\end{enumerate}
+
+Prove or disprove: For all vector vectors $\vec{u}$, $\vec{v}$ and $\vec{w}$ in 3-space, the vectors $(\vec{u}\times\vec{v})\times\vec{w}$ and $\vec{u}\times(\vec{v}\times\vec{w})$ are the same.
+
+
+
+matrix algebra:
+
+
+\it Prove that for all $m \times n$ matrices $A$, $B$, and $C$, if $A + C = B + C$, then $A = B$.
+
+\it Let $\Theta$ be the $m \times n$ zero matrix. Prove that for any $m \times n$ matrix $A$, $-A = (-1)A$ and $0A = \Theta$.
+
+\it Let $\Theta$ be the $m \times n$ zero matrix. Prove that for any $r \in \R$ and $m \times n$ matrix $A$, if $rA = \Theta$, then $r = 0$ or $A = \Theta$.
+
+\it We have seen an example of two $2 \times 2$ matrices $A$ and $B$ for which $AB \not= BA$, showing us that matrix multiplication is not commutative.
+	However, it's more that just not commutative, it's soooooo not commutative. Doing the following problems will illustrate what we mean by this.
+	\be
+	\it Find two matrices $A$ and $B$ for which $AB$ and $BA$ are defined, but have different sizes.
+	\it Find two matrices $A$ and $B$ for which $AB$ is defined, but $BA$ is not.
+	\ee
+\it Let $\Theta$ be the $2 \times 2$ zero matrix and $I$ the $2 \times 2$ identity matrix. Provide a counter-example to each of the following statements:
+	\be
+	\it For any $2 \times 2$ matrices $A$ and $B$, if $AB = \Theta$, then $A = \Theta$ or $B = \Theta$.
+	\it For any $2 \times 2$ matrices, $A$, $B$, and $C$, if $AB = AC$, then $B = C$.
+	\it For any $2 \times 2$ matrix $A$, if $A^2 = A$, then $A = \Theta$ or $A = I$.
+	\ee
+
+\it Suppose that we have a homogeneous system of linear equations whose matrix equation is given by $A\bar{x} = \bar{\th}$ where $A$ is the $m \times n$ matrix of 
+	coefficients, $\bar{x}$ is the column matrix of the $n$ variables, and $\bar{\th}$ is the column matrix of the $m$ zeroes. Use the properties of matrix
+	arithmetic to show that for any solutions $\bar{u}$ and $\bar{v}$ to the system and $r \in \R$, $\bar{u+v}$ and $r\bar{u}$ are also solutions.
+
+\it Let $A$ be an $n \times n$ invertible matrix.
+	\be
+	\it Prove that for all $m \in \N$, $A^m$ is invertible and determine a formula for its inverse in terms of $A^{-1}$. Hint: Use induction and the fact that
+		$A^{n+1} = A^n A$.
+	\it Prove that $A^T$ is invertible and determine its inverse in terms of $A^{-1}$. Hint: Use Proposition 3.
+	\ee
+Application JH
+
+
+  \item 
+    In the first network that we analyzed, with the three resistors  
+    in series, we just added to get
+    that they acted together like a single resistor of $10$~ohms.
+    We can do a similar thing for parallel circuits. 
+    In the second circuit analyzed,
+    \begin{center}
+      \includegraphics{ch1.36}
+    \end{center}
+    the electric current through the battery is $25/6$~amperes.
+    Thus, the parallel portion is 
+    \definend{equivalent}\index{resistance:equivalent}
+    to a single resistor of 
+    $20/(25/6)=4.8$~ohms. 
+    \begin{exparts}
+      \partsitem What is the equivalent resistance if we change
+         the $12$~ohm resistor to $5$~ohms?
+      \partsitem What is the equivalent resistance if the two are each
+         $8$~ohms?
+      \partsitem Find the formula for the equivalent resistance if
+         the two resistors in parallel are $r_1$~ohms and $r_2$~ohms.
+    \end{exparts}
+    \begin{answer}
+      \begin{exparts}
+        \partsitem 
+          Using the variables from the earlier analysis,
+          \begin{displaymath}
+            \begin{linsys}{3}
+              i_0&- &i_1    &-  &i_2   &=  &0 \\
+             -i_0&+ &i_1    &+  &i_2   &=  &0  \\
+                 &  &5i_1   &   &      &=  &20  \\
+                 &  &       &   &8i_2  &=  &20  \\
+                 &  &-5i_1  &+  &8i_2  &=  &0  
+            \end{linsys}
+          \end{displaymath}
+          The current flowing in each branch is then
+          is $i_2=20/8=2.5$, $i_1=20/5=4$, and $i_0=13/2=6.5$, all in amperes.
+          Thus the parallel portion is acting like a single resistor
+          of size $20/(13/2)\approx 3.08$~ohms.
+        \partsitem 
+          A similar analysis gives that
+          is $i_2=i_1=20/8=4$ and $i_0=40/8=5$~ amperes.
+          The equivalent resistance is $20/5=4$~ohms.
+        \partsitem 
+          Another analysis like the prior ones gives 
+          is $i_2=20/r_2$, $i_1=20/r_1$, 
+          and $i_0=20(r_1+r_2)/(r_1r_2)$, all in amperes.
+          So the parallel portion is acting like a single resistor of
+          size $20/i_1=r_1r_2/(r_1+r_2)$~ohms.
+          (This equation is often stated as:~the equivalent 
+          resistance~$r$ satisfies $1/r=(1/r_1)+(1/r_2)$.)
+      \end{exparts}
+    \end{answer}
+% Commented out as bulbs are not linear in resistance as they heat.
+%   \item 
+%     For the car dashboard example that opens this Topic, solve
+%     for these amperages
+%     (assume that all resistances are $2$~ohms).
+%     \begin{exparts}
+%      \partsitem If the driver is stepping on the brakes, so the
+%        brake lights are on, and no other circuit is closed.
+%      \partsitem If the hi-beam headlights and the brake lights are on.
+% %      \partsitem If the hi-beam headlights, brake lights, 
+% %        and dome light are all on.
+% %        (Perhaps the driver, realizing that the dome light is on and so
+% %        that the door must be open, has stepped on the brake!)
+%     \end{exparts}
+%     \begin{answer}
+%       \begin{exparts}
+%         \partsitem The circuit looks like this.
+%           \begin{center}
+%             \includegraphics{ch1.52}
+%           \end{center}
+%         \partsitem The circuit looks like this.
+%           \begin{center}
+%             \includegraphics{ch1.53}
+%           \end{center}
+%       \end{exparts}
+%     \end{answer}
+\item \label{exer:WheatstoneBr} 
+   A \definend{Wheatstone bridge}\index{Wheatstone bridge}
+   is used to measure resistance. 
+   \begin{center}
+     \includegraphics{ch1.47}
+   \end{center}
+   Show that in this circuit if the current
+   flowing through $r_g$ is zero then $r_4=r_2r_3/r_1$.
+   (To operate the device, put the unknown
+   resistance at $r_4$.
+   At $r_g$ is a meter that shows the current.
+   We vary the three resistances $r_1$, $r_2$, and $r_3$\Dash typically
+   they each have a calibrated knob\Dash until the 
+   current in the middle reads $0$.
+   Then the equation gives the value of $r_4$.)
+   \begin{answer}
+     Kirchoff's Current Law, applied to the node where 
+     $r_1$, $r_2$, and~$r_g$ come together, and also 
+     applied to the node where $r_3$, $r_4$, and~$r_g$ come
+     together gives these.
+     \begin{equation*}
+       \begin{linsys}{3}
+         i_1 &- &i_2 &- &i_g &= &0  \\
+         i_3 &- &i_4 &+ &i_g &= &0  
+       \end{linsys}
+     \end{equation*}
+     Kirchoff's Voltage law, applied to the loop in the top right, 
+     and to the loop in the bottom right, gives these. 
+     \begin{equation*}
+       \begin{linsys}{3}
+         i_3r_3 &- &i_gr_g &- &i_1r_1 &= &0  \\
+         i_4r_4 &- &i_2r_2 &+ &i_gr_g &= &0  
+       \end{linsys}
+     \end{equation*}
+     Assuming that $i_g$ is zero gives that $i_1=i_2$, that $i_3=i_4$,
+     that $i_1r_1=i_3r_3$, and that $i_2r_2=i_4r_4$.
+     Then rearranging the last equality
+     \begin{equation*}
+       r_4=\frac{i_2r_2}{i_4}\cdot\frac{i_3r_3}{i_1r_1}
+     \end{equation*}
+     and cancelling the $i$'s gives the desired conclusion.
+   \end{answer}
+   %  \item Prove Th\`evenin's Theorem.
+% \item[]\textit{There are networks other than electrical ones, and 
+%               we can ask how well Kirchhoff's laws apply to them.
+%               The remaining questions consider an extension to 
+%               networks of streets.}
+\item 
+    Consider this traffic circle.
+    \begin{center}
+      \includegraphics{ch1.43}
+     \end{center}
+     This is the traffic volume, in units of cars per five minutes.    
+     \begin{center}
+       \begin{tabular}{r|ccc}
+        \multicolumn{1}{c}{\ } % get rid of vert bar
+                            &\textit{North}  
+                            &\textit{Pier}  
+                            &\textit{Main}  \\
+         \cline{2-4}
+         \begin{tabular}{@{}r@{}} \textit{into} \\ \textit{out of} \end{tabular}
+         &\begin{tabular}{@{}r@{}} $100$ \\ $75$ \end{tabular}
+         &\begin{tabular}{@{}r@{}} $150$ \\ $150$ \end{tabular}
+         &\begin{tabular}{@{}r@{}} $25$ \\  $50$ \end{tabular}
+         % rows:
+         % \textit{into}      &$100$           &$150$          &$25$      \\
+         % \textit{out of}    &$75$            &$150$          &$50$       
+       \end{tabular}
+    \end{center}
+    We can set up equations to model how the traffic flows.   
+    \begin{exparts}
+      \partsitem 
+         Adapt Kirchhoff's Current Law to this circumstance.
+         Is it a reasonable modeling assumption?
+      \partsitem 
+         Label the three between-road arcs in the circle with a variable.
+         Using the (adapted) Current Law,
+         for each of the three in-out intersections state an equation
+         describing the traffic flow at that node.
+      \partsitem 
+         Solve that system.
+      \partsitem
+         Interpret your solution.
+      \partsitem
+         Restate the Voltage Law for this circumstance.
+         How reasonable is it?
+    \end{exparts}
+    \begin{answer}
+      \begin{exparts}
+        \partsitem
+           An adaptation is:~in any intersection the flow in equals the 
+           flow out.
+           It does seem reasonable in this case, unless cars are stuck at
+           an intersection for a long time.
+        \partsitem
+           We can label the flow in this way.
+           \begin{center}
+             \includegraphics{ch1.44}
+           \end{center}
+           Because $50$ cars leave via Main while $25$~cars enter, 
+           $i_1-25=i_2$.
+           Similarly Pier's in/out balance means that $i_2=i_3$ and
+           North gives $i_3+25=i_1$. 
+           We have this system.
+           \begin{equation*}
+             \begin{linsys}{3}
+               i_1  &-  &i_2  &   &     &=  &25  \\
+                        &i_2  &-  &i_3  &=  &0   \\
+              -i_1  &   &     &+  &i_3  &=  &-25
+             \end{linsys}
+           \end{equation*}
+        \partsitem 
+           The row operations $\rho_1+\rho_2$ and $rho_2+\rho_3$ lead
+           to the conclusion that there are infinitely many solutions.
+           With $i_3$ as the parameter,
+           \begin{equation*}
+             \set{\colvec[c]{25+i_3  \\ i_3  \\i_3} \suchthat i_3\in\Re}
+           \end{equation*}
+           of course, since the problem is stated in number of cars, we
+           might restrict $i_3$ to be a natural number.
+        \partsitem
+           If we picture an initially-empty circle with the given input/output
+           behavior, we can superimpose a $z_3$-many cars circling endlessly
+           to get a new solution.
+        \partsitem
+           A suitable restatement might be:~the number of cars entering the 
+           circle must equal the number of cars leaving.
+           The reasonableness of this one is not as clear.
+           Over the five minute time period we could find that
+           a half dozen more cars entered than left, 
+           although the problem statement's into/out table 
+           does satisfy this property.
+           In any event, it is of no help in getting a unique solution
+           since for that we would need to know the number of cars circling
+           endlessly.
+      \end{exparts}
+    \end{answer}
+  \item 
+     This is a network of streets. 
+          \begin{center}
+            \includegraphics{ch1.44}
+             \end{center}
+         We can observe the hourly flow of cars into this network's
+         entrances, and out of its exits.
+          \begin{center}
+            \begin{tabular}{r|ccccc}
+               \multicolumn{1}{c}{}  
+                 &\textit{east Winooski}  
+                 &\textit{west Winooski}  
+                 &\textit{Willow}  
+                 &\textit{Jay} 
+                 &\textit{Shelburne} \\ 
+                 \cline{2-6}
+              \begin{tabular}{@{}r@{}} \textit{into} \\ \textit{out of} \end{tabular} 
+              &\begin{tabular}{@{}r@{}} $80$ \\ $30$ \end{tabular} 
+              &\begin{tabular}{@{}r@{}} $50$ \\ $5$ \end{tabular} 
+              &\begin{tabular}{@{}r@{}} $65$ \\ $70$ \end{tabular} 
+              &\begin{tabular}{@{}r@{}} -- \\ $55$ \end{tabular} 
+              &\begin{tabular}{@{}r@{}} $40$ \\ $75$ \end{tabular} 
+              % rows:
+              % \textit{into}      &80    &50    &65     &--    &40      \\
+              % \textit{out of}    &30    &5     &70     &55    &75      
+            \end{tabular}
+          \end{center}
+          (Note that to reach Jay a
+          car must enter the network via some other road first, which is why
+          there is no `into Jay' entry in the table.
+          Note also that over a long period of time, 
+          the total in must approximately equal the total 
+          out, which is why both rows add to $235$~cars.)
+          Once inside the network, the traffic may flow in different
+          ways, perhaps filling Willow and leaving Jay 
+          mostly empty, or perhaps flowing in some other way.
+          Kirchhoff's Laws give the limits on that freedom.
+    \begin{exparts}
+       \partsitem Determine the restrictions on the flow inside this network 
+          of streets by setting
+          up a variable for each block, establishing the equations, 
+          and solving them.
+          Notice that some streets are one-way only.
+          (\textit{Hint:}~this will not yield a unique solution, since traffic
+          can flow through this network in various ways;
+          you should get at least one free variable.)
+       \partsitem Suppose that someone proposes construction for
+         Winooski Avenue East between Willow and Jay, 
+         and traffic on that block will be reduced.
+         What is the least amount of traffic flow that can we can
+         allow on that block without disrupting the  
+         hourly flow into and out of the network?
+    \end{exparts}
+    \begin{answer}
+      \begin{exparts}
+        \partsitem Here is a variable for each unknown block; each known
+          block has the flow shown.
+          \begin{center}
+            \includegraphics{ch1.51}          
+          \end{center}
+          We apply Kirchhoff's principle that the flow into the intersection
+          of Willow and Shelburne must equal the flow out to get
+          $i_1+25=i_2+125$.
+          Doing the intersections from right to left and top to bottom
+          gives these equations.
+          \begin{equation*}
+            \begin{linsys}{7}
+              i_1 &- &i_2 &  &    &  &    &  &    &  &    &  &    &= &10  \\
+             -i_1 &  &    &+ &i_3 &  &    &  &    &  &    &  &    &= &15   \\
+                  &  &i_2 &  &    &+ &i_4 &  &    &  &    &  &    &= &5   \\
+                  &  &    &  &-i_3&- &i_4 &  &    &+ &i_6 &  &    &= &-50 \\
+                  &  &    &  &    &  &    &  &i_5 &  &    &- &i_7 &= &-10 \\
+                  &  &    &  &    &  &    &  &    &  &-i_6&+ &i_7 &= &30 
+            \end{linsys}
+          \end{equation*}
+          The row operation $\rho_1+\rho_2$ followed by $\rho_2+\rho_3$
+          then $\rho_3+\rho_4$ and $\rho_4+\rho_5$ and finally $\rho_5+\rho_6$
+          result in this system.
+          \begin{equation*}
+            \begin{linsys}{7}
+              i_1 &- &i_2 &  &    &  &    &  &    &  &    &  &    &= &10  \\
+                  &  &-i_2&+ &i_3 &  &    &  &    &  &    &  &    &= &25   \\
+                  &  &    &  &i_3 &+ &i_4 &- &i_5 &  &    &  &    &= &30  \\
+                  &  &    &  &    &  &    &  &-i_5&+ &i_6 &  &    &= &-20  \\
+                  &  &    &  &    &  &    &  &    &  &-i_6&+ &i_7 &= &-30 \\
+                  &  &    &  &    &  &    &  &    &  &    &  &0   &= &0   
+            \end{linsys}
+          \end{equation*}
+          Since the free variables are $i_4$ and $i_7$ we take them as 
+          parameters.
+          \begin{equation*}
+          \begin{split}
+            i_6  &=  i_7-30  \\
+            i_5  &=  i_6+20=(i_7-30)+20=i_7-10 \\
+            i_3  &=  -i_4+i_5+30=-i_4+(i_7-10)+30=-i_4+i_7+20 \\
+            i_2  &=  i_3-25=(-i_4+i_7+20)-25=-i_4+i_7-5 \\
+            i_1  &=  i_2+10=(-i_4+i_7-5)+10=-i_4+i_7+5
+          \end{split}
+          \end{equation*}
+          Obviously $i_4$ and $i_7$ have to be positive, and in fact
+          the first equation shows that $i_7$ must be at least $30$.
+          If we start with $i_7$, then the $i_2$~equation shows that
+          $0\leq i_4\leq i_7-5$.
+        \partsitem We cannot take $i_7$ to be zero or else $i_6$ will
+          be negative (this would mean cars going the wrong way on the
+          one-way street Jay).
+          We can, however, take $i_7$ to be as small as $30$, and then 
+          there are many suitable $i_4$'s.
+          For instance, the solution
+          \begin{equation*}
+            (i_1,i_2,i_3,i_4,i_5,i_6,i_7)
+            =
+            (35,25,50,0,20,0,30)
+          \end{equation*}
+          results from choosing $i_4=0$.
+      \end{exparts}
+    \end{answer}
+\end{exercises}
+\index{networks|)}
+\endinput
+
+

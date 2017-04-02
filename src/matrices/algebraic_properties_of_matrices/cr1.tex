@@ -1,0 +1,36 @@
+%-----------------------------------------------------
+% index key words
+%-----------------------------------------------------
+\index{matrix powers}
+
+%-----------------------------------------------------
+% name, leave blank
+% title, if the exercise has a name i.e. Hilbert's matrix
+% difficulty = n, where n is the number of stars
+% origin = "\cite{ref}"
+%-----------------------------------------------------
+\begin{Exercise}[
+name={},
+title={}, 
+difficulty=0,
+origin={\cite{CR}}]
+Given the matrix
+\[
+	A = \begin{mat} 2 & -1\\ 0 & 2 \end{mat}
+\]
+\begin{multicols}{3}
+	\Question $A^2$
+	\Question $A^3$
+	\Question $A^5$ 
+	\EndCurrentQuestion
+\end{multicols}
+\end{Exercise}
+
+\begin{Answer}
+\begin{multicols}{2}
+	\Question $A^2 =  \begin{mat} 4 & -4 \\ 0 & 4 \end{mat}$
+	\Question $A^3 = A^2 \, A   =  \begin{mat} 8 & -12 \\ 0 & 8 \end{mat}$
+	\Question $A^5 = A^3 \, A^2 =  \begin{mat} 32 & -80 \\ 0 & 32 \end{mat}$
+        \EndCurrentQuestion
+\end{multicols}
+\end{Answer}
