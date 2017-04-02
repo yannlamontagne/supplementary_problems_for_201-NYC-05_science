@@ -2,7 +2,7 @@
 %	DOCUMENT SIZE
 %----------------------------------------------------------------------------------------
 
-\documentclass[twocolumn, letterpaper]{book}
+\documentclass[twocolumn, letterpaper]{article}
 \pagestyle{empty}
 \setlength{\paperwidth}{8.5in}
 \setlength{\paperheight}{11in} 
@@ -125,7 +125,7 @@
 %       
 %----------------------------------------------------------------------------------------
 \usepackage[titletoc,title]{appendix}
-\renewcommand{\bibname}{References}
+\renewcommand{\refname}{References}
 
 \raggedbottom
 
@@ -137,35 +137,34 @@
 %\pagestyle{empty} % Removes page numbers
 \titleGP
 \newpage
-\thispagestyle{empty}
-\mbox{ }
-\newpage
+%\thispagestyle{empty}
+%\mbox{ }
+%\newpage
 \twocolumn
 
 \raggedbottom
 
-\thispagestyle{empty}
-\pagenumbering{gobble}
-\tableofcontents
-\addtocontents{toc}{\protect\thispagestyle{empty}} 
+%\thispagestyle{empty}
+%\pagenumbering{gobble}
+%\tableofcontents
+%\addtocontents{toc}{\protect\thispagestyle{empty}} 
 
-\mainmatter
-\input{systems_of_linear_equations/index.tex}
+%\mainmatter
+%\input{systems_of_linear_equations/index.tex}
 \input{matrices/index.tex}
 \input{determinants/index.tex}
 \input{vector_geometry/index.tex}
-\input{vector_spaces/index.tex}
-\input{applications/index.tex}
+%\input{vector_spaces/index.tex}
+%\input{applications/index.tex}
 
-\appendix
-\chapter{Answers to Exercises}
+\section{Answers to Exercises}
 Note that either a hint, a final answer or a complete solution is provided.
 %\addcontentsline{toc}{chapter}{Answers to Exercises}
 \shipoutAnswer
 
 \input{references.tex}
 
-\addcontentsline{toc}{chapter}{Index}
-\printindex
+%\addcontentsline{toc}{chapter}{Index}
+%\printindex
 
 \end{document}
