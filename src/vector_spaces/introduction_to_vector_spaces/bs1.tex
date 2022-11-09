@@ -1,0 +1,25 @@
+%-----------------------------------------------------
+% index key words
+%-----------------------------------------------------
+\index{vector space}
+
+%-----------------------------------------------------
+% name, leave blank
+% title, if the exercise has a name i.e. Hilbert's matrix
+% difficulty = n, where n is the number of stars
+% origin = "by name \cite{ref}"
+%-----------------------------------------------------
+\begin{Exercise}[
+name={},
+title={}, 
+difficulty=0,
+origin={\cite{BS}}]
+Let $S= \set{\rowvec{0, &0, &x, &y}\in\Re^4\suchthat x\leq y}$.  
+Determine whether $S$ is a vector space with standard addition and 
+multiplication by a scalar of $\Re^4$.
+\end{Exercise}
+
+\begin{Answer}
+Not a vector space since it is not closed under scalar multiplication, i.e. $s=(0, 1, 2)\in S$ but $(-1)\cdot s=(0, -1, -2)\notin S$.
+
+\end{Answer}
